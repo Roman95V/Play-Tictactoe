@@ -29,17 +29,15 @@ namespace PlayTictactoeTests
         {
             _webDriver.Quit();
         }
+
         [Test]
         public void CheckTheXChaActerDisplay()
         {
             var game = new Game(_webDriver);
+
             game.OpenPage();
             game.ClickCellTopLeft();
 
-          //  game.ClickCellTopLeft();
-          //  game.ClickCelliTheMiddleOnTheLeftt();
-          //  game.ClickCellTopLeft();
-          //
             var actualresult = _webDriver.FindElement(By.CssSelector("div.x"));
             var result = _webDriver.FindElement(By.CssSelector("div.square:nth-child(1)"));
 
@@ -48,18 +46,51 @@ namespace PlayTictactoeTests
         }
 
         [Test]
-        public void Check()
+        public void CheckIconChangesFromOnePlayerToTwo()
         {
             var game = new Game(_webDriver);
-            game.OpenPage();
-            
-            game.ClickPlayTwoPlayers();
-            Thread.Sleep(3000);
-            var actualresult = _webDriver.FindElement(By.CssSelector("p.p1"));
-            var result = _webDriver.FindElement(By.CssSelector("p.p2"));
-           
-            Assert.AreNotEqual(result, actualresult);
 
+            game.OpenPage();
+            game.ClickPlayTwoPlayers();
+
+            var actualresult = _webDriver.FindElement(By.CssSelector("p.p2")).Text;
+            
+            Assert.AreEqual("2P", actualresult);
+
+        }
+
+        [Test]
+        public void CheckDisplaTheVictoryOfTheFirstPlayer()
+        {
+            var game = new Game(_webDriver);
+
+            game.OpenPage();
+            game.ClickPlayTwoPlayers();
+            game.ClickCellTopLeft();
+            game.ClickCellTopRight();
+            game.ClickCelliTheMiddleOnTheLeftt();
+            game.ClickCelliTheMiddleOnTheRight();
+            game.ClickCellBottomLeftt();
+
+            var actualresult = _webDriver.FindElement(By.CssSelector(".player1 > span.score")).Text;
+           
+            Assert.AreEqual("1",actualresult); 
+        }
+
+        [Test]
+        public void CheckDisplaTheVictoryOfTheCoputer()
+        {
+            var game = new Game(_webDriver);
+
+            game.OpenPage();
+            game.ClickCellTopLeft();
+            game.ClickCellTop();
+            game.ClickCelliTheMiddleOnTheLeftt();
+            
+            var actualresult = _webDriver.FindElement(By.CssSelector("p.player2 > span.score.appear")).Text;
+            Thread.Sleep(3000);
+
+            Assert.AreEqual("1", actualresult); 
         }
     }
 }
