@@ -12,7 +12,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace PlayTictactoeTests
 {
-    public class GameTest
+    public class HomePageTests
     {
         private IWebDriver _webDriver;
         [SetUp]
@@ -33,7 +33,7 @@ namespace PlayTictactoeTests
         [Test]
         public void CheckTheXChaActerDisplay()
         {
-            var game = new Game(_webDriver);
+            var game = new HomePage(_webDriver);
 
             game.OpenPage();
             game.ClickCellTopLeft();
@@ -48,7 +48,7 @@ namespace PlayTictactoeTests
         [Test]
         public void CheckIconChangesFromOnePlayerToTwo()
         {
-            var game = new Game(_webDriver);
+            var game = new HomePage(_webDriver);
 
             game.OpenPage();
             game.ClickPlayTwoPlayers();
@@ -62,7 +62,7 @@ namespace PlayTictactoeTests
         [Test]
         public void CheckDisplaTheVictoryOfTheFirstPlayer()
         {
-            var game = new Game(_webDriver);
+            var game = new HomePage(_webDriver);
 
             game.OpenPage();
             game.ClickPlayTwoPlayers();
@@ -80,7 +80,7 @@ namespace PlayTictactoeTests
         [Test]
         public void CheckDisplaTheVictoryOfTheCoputer()
         {
-            var game = new Game(_webDriver);
+            var game = new HomePage(_webDriver);
 
             game.OpenPage();
             game.ClickCellTopLeft();

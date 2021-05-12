@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlayTictactoeTests
 {
-    public class Game
+    public class HomePage
     {
         private readonly IWebDriver _webDriver;
         private By _twoPlayers = By.CssSelector("path.p1");
@@ -22,12 +22,12 @@ namespace PlayTictactoeTests
         private By _cellBottom = By.CssSelector("div.square:nth-child(8)");
         private  By _x = By.CssSelector("div.x");
 
-        public Game(IWebDriver webDriver)
+        public HomePage(IWebDriver webDriver)
         {
             _webDriver = webDriver;
         }
 
-        public Game OpenPage()
+        public HomePage OpenPage()
         {
             _webDriver.Navigate().GoToUrl("https://playtictactoe.org/");
             return this;
